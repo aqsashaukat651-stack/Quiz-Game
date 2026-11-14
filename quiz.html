@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Quick Quiz</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#FBEAF6;--card:#FFFFFF;--ink:#3A1456;--muted:#8A5FA8;--line:#EBCDEB;--accent:#9B2FC4;--accent-ink:#FFFFFF;--ring:#FF4FA3;--good:#14925E;--good-bg:#DDF5EA;--bad:#CF3A3A;--bad-bg:#FBE4E4;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1E0B2E;--card:#2D1245;--ink:#FBE8FF;--muted:#C9A3E0;--line:#4B2275;--accent:#F08CFF;--accent-ink:#1E0B2E;--ring:#FF7AC0;--good:#4FD69B;--good-bg:#12392E;--bad:#FF8383;--bad-bg:#401C2E;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#1E0B2E;--card:#2D1245;--ink:#FBE8FF;--muted:#C9A3E0;--line:#4B2275;--accent:#F08CFF;--accent-ink:#1E0B2E;--ring:#FF7AC0;--good:#4FD69B;--good-bg:#12392E;--bad:#FF8383;--bad-bg:#401C2E;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;background:var(--bg) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 1200' preserveAspectRatio='xMidYMid slice'%3E%3Ccircle cx='120' cy='140' r='170' fill='%23FF4FA3' fill-opacity='.2'/%3E%3Ccircle cx='700' cy='320' r='120' fill='%239B2FC4' fill-opacity='.18'/%3E%3Ccircle cx='90' cy='760' r='110' fill='%239B2FC4' fill-opacity='.16'/%3E%3Ccircle cx='660' cy='1020' r='210' fill='%23FF4FA3' fill-opacity='.18'/%3E%3Ccircle cx='380' cy='1180' r='90' fill='%23C86BFF' fill-opacity='.18'/%3E%3Cg fill='%23FFFFFF' fill-opacity='.55'%3E%3Cpath transform='translate(300 120)' d='M0-26l7 17 19 1-15 12 5 18-16-10-16 10 5-18-15-12 19-1z'/%3E%3Cpath transform='translate(650 640) scale(.8)' d='M0-26l7 17 19 1-15 12 5 18-16-10-16 10 5-18-15-12 19-1z'/%3E%3Cpath transform='translate(170 470) scale(.7)' d='M0-26l7 17 19 1-15 12 5 18-16-10-16 10 5-18-15-12 19-1z'/%3E%3Cpath transform='translate(480 860) scale(1.1)' d='M0-26l7 17 19 1-15 12 5 18-16-10-16 10 5-18-15-12 19-1z'/%3E%3Cpath transform='translate(730 1120) scale(.6)' d='M0-26l7 17 19 1-15 12 5 18-16-10-16 10 5-18-15-12 19-1z'/%3E%3C/g%3E%3C/svg%3E") center top/cover no-repeat fixed;color:var(--ink);font-family:"Nunito",ui-rounded,"Segoe UI",system-ui,sans-serif;font-weight:500;line-height:1.5}
+.wrap{max-width:480px;margin:0 auto;padding:20px 16px 40px}
+body{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 1200' preserveAspectRatio='xMidYMid slice'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%231E0B3F'/%3E%3Cstop offset='.55' stop-color='%236A2A9E'/%3E%3Cstop offset='.85' stop-color='%23FF6FB5'/%3E%3Cstop offset='1' stop-color='%23FFC2DE'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='800' height='1200' fill='url(%23g)'/%3E%3Ccircle cx='580' cy='240' r='150' fill='%23FFD6EE' fill-opacity='.18'/%3E%3Ccircle cx='580' cy='240' r='110' fill='%23FFD6EE' fill-opacity='.25'/%3E%3Ccircle cx='580' cy='240' r='80' fill='%23FFF1F9'/%3E%3Cg fill='%23FFFFFF'%3E%3Ccircle cx='80' cy='90' r='3'/%3E%3Ccircle cx='200' cy='200' r='2'/%3E%3Ccircle cx='330' cy='70' r='3'/%3E%3Ccircle cx='420' cy='300' r='2'/%3E%3Ccircle cx='700' cy='120' r='2'/%3E%3Ccircle cx='740' cy='420' r='3'/%3E%3Ccircle cx='120' cy='380' r='2'/%3E%3Ccircle cx='260' cy='460' r='3'/%3E%3Ccircle cx='520' cy='520' r='2'/%3E%3Ccircle cx='40' cy='560' r='2'/%3E%3Ccircle cx='660' cy='560' r='3'/%3E%3Ccircle cx='350' cy='600' r='2'/%3E%3C/g%3E%3Cg fill='%23FFFFFF' fill-opacity='.14'%3E%3Cellipse cx='200' cy='720' rx='160' ry='30'/%3E%3Cellipse cx='570' cy='800' rx='200' ry='34'/%3E%3C/g%3E%3Cpath d='M0 900Q200 800 400 880T800 850V1200H0Z' fill='%234A1A73'/%3E%3Cpath d='M0 1000Q250 900 500 990T800 960V1200H0Z' fill='%232E0F52'/%3E%3Cg fill='%231C0A38'%3E%3Cpolygon points='50,1040 90,1040 70,970'/%3E%3Cpolygon points='100,1050 130,1050 115,995'/%3E%3Cpolygon points='670,1010 710,1010 690,940'/%3E%3Cpolygon points='720,1020 752,1020 736,965'/%3E%3C/g%3E%3C/svg%3E")}
+.wrap{position:relative;z-index:1}
+body{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 1200' preserveAspectRatio='xMidYMid slice'%3E%3Cdefs%3E%3ClinearGradient id='s' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%230B0724'/%3E%3Cstop offset='.6' stop-color='%231E0F52'/%3E%3Cstop offset='1' stop-color='%234A1A7A'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='800' height='1200' fill='url(%23s)'/%3E%3Ccircle cx='250' cy='260' r='220' fill='%239B2FC4' fill-opacity='.25'/%3E%3Ccircle cx='500' cy='1000' r='260' fill='%23FF4FA3' fill-opacity='.18'/%3E%3Ccircle cx='80' cy='1100' r='150' fill='%234FD8FF' fill-opacity='.12'/%3E%3Cg fill='%23FFFFFF'%3E%3Ccircle cx='60' cy='80' r='2'/%3E%3Ccircle cx='180' cy='160' r='3'/%3E%3Ccircle cx='320' cy='60' r='2'/%3E%3Ccircle cx='430' cy='260' r='2'/%3E%3Ccircle cx='760' cy='90' r='3'/%3E%3Ccircle cx='90' cy='400' r='2'/%3E%3Ccircle cx='250' cy='500' r='3'/%3E%3Ccircle cx='480' cy='440' r='2'/%3E%3Ccircle cx='720' cy='560' r='2'/%3E%3Ccircle cx='40' cy='600' r='3'/%3E%3Ccircle cx='560' cy='660' r='2'/%3E%3Ccircle cx='330' cy='860' r='2'/%3E%3Ccircle cx='450' cy='1100' r='3'/%3E%3Ccircle cx='250' cy='1130' r='2'/%3E%3Ccircle cx='760' cy='760' r='2'/%3E%3Ccircle cx='120' cy='940' r='3'/%3E%3C/g%3E%3Cellipse cx='600' cy='300' rx='190' ry='44' fill='none' stroke='%23FFE3F3' stroke-opacity='.7' stroke-width='8' transform='rotate(-18 600 300)'/%3E%3Ccircle cx='600' cy='300' r='110' fill='%23FF8FC8'/%3E%3Cellipse cx='600' cy='270' rx='104' ry='10' fill='%23E86AAE' fill-opacity='.5'/%3E%3Cellipse cx='600' cy='335' rx='98' ry='10' fill='%23E86AAE' fill-opacity='.5'/%3E%3Ccircle cx='160' cy='760' r='64' fill='%237FD6FF'/%3E%3Ccircle cx='132' cy='738' r='14' fill='%235BB8E8'/%3E%3Ccircle cx='186' cy='790' r='10' fill='%235BB8E8'/%3E%3Ccircle cx='690' cy='930' r='42' fill='%23FFE08A'/%3E%3Ccircle cx='702' cy='942' r='28' fill='%23FFC85C'/%3E%3Cline x1='420' y1='120' x2='330' y2='170' stroke='%23FFFFFF' stroke-width='3' stroke-linecap='round' stroke-opacity='.85'/%3E%3Cline x1='510' y1='70' x2='420' y2='120' stroke='%23FFFFFF' stroke-width='2' stroke-linecap='round' stroke-opacity='.3'/%3E%3Cg transform='translate(380 640) rotate(35)'%3E%3Cpolygon points='-8,40 0,78 8,40' fill='%23FFB347'/%3E%3Cpolygon points='-16,20 -30,46 -14,36' fill='%239B2FC4'/%3E%3Cpolygon points='16,20 30,46 14,36' fill='%239B2FC4'/%3E%3Cellipse cx='0' cy='0' rx='16' ry='40' fill='%23F4F1FF'/%3E%3Cpolygon points='-16,-12 0,-62 16,-12' fill='%23FF4FA3'/%3E%3Ccircle cx='0' cy='-4' r='7' fill='%237FD6FF'/%3E%3C/g%3E%3C/svg%3E")}
+body::after{content:"";position:fixed;inset:0;background:var(--bg);opacity:.6;pointer-events:none}
+.top{background:var(--card);border:2px solid var(--line);border-radius:16px;padding:8px 14px}
+#fb:not(:empty){background:var(--card);border:2px solid var(--line);border-radius:14px;padding:10px 14px}
+.card{background:var(--card);border:2px solid var(--line);border-radius:20px;padding:22px}
+.center{text-align:center;margin-top:12vh}
+h1{font-size:32px;line-height:1.15;margin:0 0 10px;font-weight:800}
+h2{font-size:22px;line-height:1.3;margin:0;font-weight:800}
+p{margin:0 0 22px;color:var(--muted)}
+.btn{display:block;width:100%;border:0;border-radius:14px;padding:15px 18px;font:inherit;font-weight:800;font-size:17px;background:var(--accent);color:var(--accent-ink);cursor:pointer;transition:transform .12s}
+.btn:active{transform:scale(.98)}
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px}
+.meta{display:flex;flex-direction:column;font-weight:700;font-size:14px;color:var(--muted)}
+.meta b{color:var(--ink);font-size:16px}
+.timer{position:relative;width:52px;height:52px}
+.timer svg{width:52px;height:52px;transform:rotate(-90deg)}
+.timer circle{fill:none;stroke-width:5}
+.timer .bg{stroke:var(--line)}
+#ring{stroke:var(--ring);stroke-linecap:round;stroke-dasharray:138.2;stroke-dashoffset:0;transition:stroke-dashoffset 1s linear}
+#sec{position:absolute;inset:0;display:grid;place-items:center;font-weight:800;font-size:17px}
+.bar{height:8px;border-radius:99px;background:var(--line);overflow:hidden;margin-bottom:16px}
+.bar i{display:block;height:100%;width:0;background:var(--accent);border-radius:99px;transition:width .3s}
+.opts{display:grid;gap:10px;margin-top:20px}
+.opt{display:flex;align-items:center;gap:12px;width:100%;text-align:left;padding:12px 14px;border-radius:14px;border:2px solid var(--line);background:var(--card);color:var(--ink);font:inherit;font-weight:700;font-size:17px;cursor:pointer;transition:transform .12s,border-color .12s}
+.opt:active:not(:disabled){transform:scale(.985)}
+.opt:hover:not(:disabled){border-color:var(--accent)}
+.opt:disabled{cursor:default}
+.ltr{flex:none;width:32px;height:32px;border-radius:10px;display:grid;place-items:center;background:var(--bg);color:var(--accent);font-weight:800}
+.opt.good{background:var(--good-bg);border-color:var(--good);color:var(--good)}
+.opt.bad{background:var(--bad-bg);border-color:var(--bad);color:var(--bad)}
+.opt.good .ltr,.opt.bad .ltr{background:transparent;color:inherit}
+#fb{min-height:26px;margin:14px 2px;font-weight:700}
+#fb.good{color:var(--good)}
+#fb.bad{color:var(--bad)}
+#fb.hint{color:var(--muted)}
+:root[data-theme="light"] body{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 1200' preserveAspectRatio='xMidYMid slice'%3E%3Cdefs%3E%3ClinearGradient id='d' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%23A9D8FF'/%3E%3Cstop offset='.5' stop-color='%23E8D4FF'/%3E%3Cstop offset='.8' stop-color='%23FFD0E8'/%3E%3Cstop offset='1' stop-color='%23FFE6F2'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='800' height='1200' fill='url(%23d)'/%3E%3Ccircle cx='600' cy='250' r='130' fill='%23FFF3B0' fill-opacity='.35'/%3E%3Ccircle cx='600' cy='250' r='95' fill='%23FFF3B0' fill-opacity='.5'/%3E%3Ccircle cx='600' cy='250' r='62' fill='%23FFD966'/%3E%3Cg fill='%23FFFFFF' fill-opacity='.9'%3E%3Cellipse cx='180' cy='200' rx='90' ry='26'/%3E%3Cellipse cx='230' cy='178' rx='60' ry='30'/%3E%3Cellipse cx='130' cy='186' rx='50' ry='22'/%3E%3Cellipse cx='420' cy='430' rx='110' ry='28'/%3E%3Cellipse cx='470' cy='406' rx='60' ry='30'/%3E%3Cellipse cx='370' cy='414' rx='50' ry='22'/%3E%3Cellipse cx='650' cy='650' rx='80' ry='22'/%3E%3Cellipse cx='690' cy='632' rx='44' ry='24'/%3E%3C/g%3E%3Cpath d='M0 860Q200 760 420 840T800 800V1200H0Z' fill='%23E9B8F0'/%3E%3Cpath d='M0 960Q260 860 520 950T800 920V1200H0Z' fill='%23D08EE6'/%3E%3Cpath d='M0 1060Q220 990 460 1050T800 1030V1200H0Z' fill='%23B566D6'/%3E%3Crect x='86' y='990' width='8' height='34' fill='%238A4FA8'/%3E%3Ccircle cx='90' cy='972' r='30' fill='%23FFB3DA'/%3E%3Crect x='696' y='960' width='8' height='34' fill='%238A4FA8'/%3E%3Ccircle cx='700' cy='942' r='26' fill='%23FFB3DA'/%3E%3Cg fill='%23FFFFFF'%3E%3Ccircle cx='140' cy='1090' r='6'/%3E%3Ccircle cx='280' cy='1105' r='6'/%3E%3Ccircle cx='520' cy='1095' r='6'/%3E%3Ccircle cx='660' cy='1080' r='6'/%3E%3C/g%3E%3Cg fill='%23FF8FC8'%3E%3Ccircle cx='200' cy='1115' r='6'/%3E%3Ccircle cx='600' cy='1115' r='6'/%3E%3C/g%3E%3C/svg%3E")}
+:root[data-theme="light"] body::after{opacity:.18}
+:root[data-theme="light"]{--bg:#FFF3DC;--card:#FFFFFF;--ink:#4A2200;--muted:#8A5A2B;--line:#F6D9A8;--accent:#D9480F;--accent-ink:#FFFFFF;--ring:#FFB400}
+:root[data-theme="light"] body{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 1200' preserveAspectRatio='xMidYMid slice'%3E%3Cdefs%3E%3ClinearGradient id='w' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%23FFD27A'/%3E%3Cstop offset='.55' stop-color='%23FFBE7A'/%3E%3Cstop offset='1' stop-color='%23FFE9C2'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='800' height='1200' fill='url(%23w)'/%3E%3Ccircle cx='600' cy='250' r='140' fill='%23FFF6C2' fill-opacity='.35'/%3E%3Ccircle cx='600' cy='250' r='100' fill='%23FFF6C2' fill-opacity='.5'/%3E%3Ccircle cx='600' cy='250' r='66' fill='%23FFE45E'/%3E%3Cg fill='%23FFF8E8' fill-opacity='.85'%3E%3Cellipse cx='180' cy='200' rx='90' ry='26'/%3E%3Cellipse cx='230' cy='178' rx='60' ry='30'/%3E%3Cellipse cx='130' cy='186' rx='50' ry='22'/%3E%3Cellipse cx='420' cy='430' rx='110' ry='28'/%3E%3Cellipse cx='470' cy='406' rx='60' ry='30'/%3E%3Cellipse cx='370' cy='414' rx='50' ry='22'/%3E%3Cellipse cx='650' cy='650' rx='80' ry='22'/%3E%3Cellipse cx='690' cy='632' rx='44' ry='24'/%3E%3C/g%3E%3Cpath d='M0 860Q200 760 420 840T800 800V1200H0Z' fill='%23F7B267'/%3E%3Cpath d='M0 960Q260 860 520 950T800 920V1200H0Z' fill='%23EF8F3C'/%3E%3Cpath d='M0 1060Q220 990 460 1050T800 1030V1200H0Z' fill='%23D9702A'/%3E%3Crect x='86' y='990' width='8' height='34' fill='%237A3E12'/%3E%3Ccircle cx='90' cy='972' r='30' fill='%23FFC947'/%3E%3Crect x='696' y='960' width='8' height='34' fill='%237A3E12'/%3E%3Ccircle cx='700' cy='942' r='26' fill='%23FFC947'/%3E%3Cg fill='%23FFFFFF'%3E%3Ccircle cx='140' cy='1090' r='6'/%3E%3Ccircle cx='280' cy='1105' r='6'/%3E%3Ccircle cx='520' cy='1095' r='6'/%3E%3Ccircle cx='660' cy='1080' r='6'/%3E%3C/g%3E%3Cg fill='%23FFE45E'%3E%3Ccircle cx='200' cy='1115' r='6'/%3E%3Ccircle cx='600' cy='1115' r='6'/%3E%3C/g%3E%3C/svg%3E")}
+:root[data-theme="light"]{--bg:#FFF5F9;--card:#FFFFFF;--ink:#3B1F2E;--muted:#8C6577;--line:#F8D7E5;--accent:#D6336C;--accent-ink:#FFFFFF;--ring:#FF8AB5}
+:root[data-theme="light"] body{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 1200' preserveAspectRatio='xMidYMid slice'%3E%3Cdefs%3E%3ClinearGradient id='p' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%23FFFFFF'/%3E%3Cstop offset='.55' stop-color='%23FFE4EF'/%3E%3Cstop offset='1' stop-color='%23FFC9DE'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='800' height='1200' fill='url(%23p)'/%3E%3Ccircle cx='600' cy='250' r='140' fill='%23FFD6E6' fill-opacity='.35'/%3E%3Ccircle cx='600' cy='250' r='100' fill='%23FFD6E6' fill-opacity='.5'/%3E%3Ccircle cx='600' cy='250' r='66' fill='%23FFB3D1'/%3E%3Cg fill='%23FFFFFF' fill-opacity='.95'%3E%3Cellipse cx='180' cy='200' rx='90' ry='26'/%3E%3Cellipse cx='230' cy='178' rx='60' ry='30'/%3E%3Cellipse cx='130' cy='186' rx='50' ry='22'/%3E%3Cellipse cx='420' cy='430' rx='110' ry='28'/%3E%3Cellipse cx='470' cy='406' rx='60' ry='30'/%3E%3Cellipse cx='370' cy='414' rx='50' ry='22'/%3E%3Cellipse cx='650' cy='650' rx='80' ry='22'/%3E%3Cellipse cx='690' cy='632' rx='44' ry='24'/%3E%3C/g%3E%3Cg fill='%23FFFFFF'%3E%3Cellipse cx='300' cy='540' rx='8' ry='4'/%3E%3Cellipse cx='520' cy='590' rx='8' ry='4'/%3E%3Cellipse cx='120' cy='650' rx='8' ry='4'/%3E%3Cellipse cx='700' cy='500' rx='8' ry='4'/%3E%3Cellipse cx='60' cy='480' rx='8' ry='4'/%3E%3C/g%3E%3Cpath d='M0 860Q200 760 420 840T800 800V1200H0Z' fill='%23FFD1E3'/%3E%3Cpath d='M0 960Q260 860 520 950T800 920V1200H0Z' fill='%23FFB5D1'/%3E%3Cpath d='M0 1060Q220 990 460 1050T800 1030V1200H0Z' fill='%23FF9DC2'/%3E%3Crect x='86' y='990' width='8' height='34' fill='%239C5A73'/%3E%3Ccircle cx='90' cy='972' r='30' fill='%23FFD6E6'/%3E%3Crect x='696' y='960' width='8' height='34' fill='%239C5A73'/%3E%3Ccircle cx='700' cy='942' r='26' fill='%23FFD6E6'/%3E%3Cg fill='%23FFFFFF'%3E%3Ccircle cx='140' cy='1090' r='6'/%3E%3Ccircle cx='280' cy='1105' r='6'/%3E%3Ccircle cx='520' cy='1095' r='6'/%3E%3Ccircle cx='660' cy='1080' r='6'/%3E%3Ccircle cx='200' cy='1115' r='6'/%3E%3Ccircle cx='600' cy='1115' r='6'/%3E%3C/g%3E%3C/svg%3E")}
+:root[data-theme="light"] :is(.card,.top,.tbtn,#fb:not(:empty),.opt:not(.good):not(.bad)){background:color-mix(in srgb,var(--card) 48%,transparent);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.bar2{display:flex;justify-content:flex-end;gap:8px;margin-bottom:12px}
+.bar2 .tbtn{margin:0}
+.tbtn{display:block;margin:0 0 12px auto;padding:8px 16px;border-radius:99px;border:2px solid var(--line);background:color-mix(in srgb,var(--card) 78%,transparent);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);color:var(--ink);font:inherit;font-weight:700;font-size:14px;cursor:pointer}
+.big{font-size:64px;font-weight:800;line-height:1;color:var(--accent);margin-bottom:8px}
+button:focus-visible{outline:3px solid var(--ring);outline-offset:2px}
+.card,.opt,.top,#fb:not(:empty){background:color-mix(in srgb,var(--card) 78%,transparent);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<main class="wrap">
+<div class="bar2"><button class="tbtn" id="snd" type="button">Sound on</button><button class="tbtn" id="theme" type="button">Dark mode</button></div>
+<section id="start" class="card center">
+<h1>Quick quiz</h1>
+<p>10 new questions every game, 15 seconds each. Answer fast and build a streak.</p>
+<button class="btn" id="go" type="button">Start quiz</button>
+</section>
+<section id="quiz" hidden>
+<div class="top">
+<div class="meta"><b id="count"></b><span id="streak"></span></div>
+<div class="timer"><svg viewBox="0 0 52 52" aria-hidden="true"><circle class="bg" cx="26" cy="26" r="22"/><circle id="ring" cx="26" cy="26" r="22"/></svg><div id="sec">15</div></div>
+</div>
+<div class="bar"><i id="fill"></i></div>
+<div class="card"><h2 id="q"></h2><div class="opts" id="opts"></div></div>
+<div id="fb" aria-live="polite"></div>
+<button class="btn" id="next" type="button" hidden>Next question</button>
+</section>
+<section id="end" class="card center" hidden>
+<div class="big" id="score"></div>
+<h1 id="msg"></h1>
+<p id="sub"></p>
+<button class="btn" id="again" type="button">Play again</button>
+</section>
+</main>
+<script>
+const Q=[
+{q:"What is the capital of Pakistan?",o:["Islamabad","Karachi","Lahore","Peshawar"]},
+{q:"Which planet is closest to the Sun?",o:["Mercury","Venus","Earth","Mars"]},
+{q:"Which is the largest ocean on Earth?",o:["Pacific","Atlantic","Indian","Arctic"]},
+{q:"Who wrote “Romeo and Juliet”?",o:["William Shakespeare","Charles Dickens","Mark Twain","Jane Austen"]},
+{q:"What is the national animal of Pakistan?",o:["Markhor","Snow leopard","Lion","Camel"]},
+{q:"What is 9 × 7?",o:["63","56","72","54"]},
+{q:"Which gas do plants take in from the air?",o:["Carbon dioxide","Oxygen","Nitrogen","Hydrogen"]},
+{q:"What is the smallest prime number?",o:["2","0","1","3"]},
+{q:"Who is the founder of Pakistan?",o:["Muhammad Ali Jinnah","Allama Iqbal","Liaquat Ali Khan","Sir Syed Ahmad Khan"]},
+{q:"Which is the highest mountain in Pakistan?",o:["K2","Nanga Parbat","Tirich Mir","Rakaposhi"]},
+{q:"Which is the longest river in Pakistan?",o:["Indus","Jhelum","Ravi","Chenab"]},
+{q:"When is Pakistan’s Independence Day?",o:["14 August","23 March","6 September","25 December"]},
+{q:"How many continents are there?",o:["7","5","6","8"]},
+{q:"What is the largest animal on Earth?",o:["Blue whale","African elephant","Giraffe","Great white shark"]},
+{q:"What is the chemical formula of water?",o:["H₂O","CO₂","O₂","NaCl"]},
+{q:"How many sides does a hexagon have?",o:["6","5","8","7"]},
+{q:"Which is the largest country by area?",o:["Russia","Canada","China","United States"]},
+{q:"What is the capital of Japan?",o:["Tokyo","Kyoto","Osaka","Seoul"]},
+{q:"Which organ pumps blood around the body?",o:["Heart","Liver","Lungs","Kidney"]},
+{q:"What is 12 × 12?",o:["144","124","132","148"]},
+{q:"Which planet is called the Red Planet?",o:["Mars","Jupiter","Venus","Saturn"]},
+{q:"Who painted the Mona Lisa?",o:["Leonardo da Vinci","Pablo Picasso","Vincent van Gogh","Michelangelo"]},
+{q:"What is the capital of France?",o:["Paris","Lyon","Marseille","Nice"]},
+{q:"Which animal is called the ship of the desert?",o:["Camel","Horse","Donkey","Elephant"]},
+{q:"How many players are on the field in a cricket team?",o:["11","9","12","10"]},
+{q:"Which gas do humans need to breathe?",o:["Oxygen","Nitrogen","Helium","Carbon dioxide"]},
+{q:"What is the square root of 81?",o:["9","8","7","11"]},
+{q:"What is the hardest natural substance?",o:["Diamond","Gold","Iron","Quartz"]},
+{q:"Which is the smallest continent?",o:["Australia","Europe","Antarctica","South America"]},
+{q:"Which festival comes right after Ramadan?",o:["Eid ul-Fitr","Eid ul-Adha","Muharram","Shab-e-Barat"]},
+{q:"How many bones does an adult human have?",o:["206","180","250","300"]},
+{q:"What is the currency of Pakistan?",o:["Rupee","Dirham","Riyal","Taka"]},
+{q:"Which is the tallest animal?",o:["Giraffe","Elephant","Camel","Horse"]},
+{q:"At what temperature does water freeze, in °C?",o:["0","10","32","100"]},
+{q:"Which colour do you get by mixing red and blue?",o:["Purple","Green","Orange","Brown"]},
+{q:"What is the capital city of Punjab, Pakistan?",o:["Lahore","Multan","Faisalabad","Rawalpindi"]},
+{q:"What is 15 + 27?",o:["42","41","43","52"]},
+{q:"Who invented the telephone?",o:["Alexander Graham Bell","Thomas Edison","Nikola Tesla","Isaac Newton"]},
+{q:"What does “HTML” stand for?",o:["HyperText Markup Language","High Text Machine Language","Hyper Transfer Mode Link","Home Tool Markup Language"]},
+{q:"Which company makes the iPhone?",o:["Apple","Samsung","Google","Sony"]},
+{q:"How many days are there in a leap year?",o:["366","365","364","367"]},
+{q:"What is the largest planet in our solar system?",o:["Jupiter","Saturn","Neptune","Earth"]},
+{q:"Which is the fastest land animal?",o:["Cheetah","Lion","Horse","Leopard"]},
+{q:"In which country are the pyramids of Giza?",o:["Egypt","Iraq","Morocco","Turkey"]},
+{q:"What is the main ingredient of bread?",o:["Flour","Rice","Sugar","Salt"]},
+{q:"Who was the first person to walk on the Moon?",o:["Neil Armstrong","Buzz Aldrin","Yuri Gagarin","Michael Collins"]},
+{q:"How many strings does a standard guitar have?",o:["6","4","5","8"]},
+{q:"What is the capital of Saudi Arabia?",o:["Riyadh","Jeddah","Mecca","Dammam"]},
+{q:"Which ocean is the smallest?",o:["Arctic","Indian","Atlantic","Pacific"]},
+{q:"What is the national sport of Pakistan?",o:["Field hockey","Cricket","Football","Kabaddi"]},
+{q:"Which vitamin do we get from sunlight?",o:["Vitamin D","Vitamin C","Vitamin A","Vitamin B12"]},
+{q:"How many zeros are in one million?",o:["6","5","7","9"]},
+{q:"Which of these birds cannot fly?",o:["Penguin","Eagle","Parrot","Sparrow"]},
+{q:"Which season comes after summer in most countries?",o:["Autumn","Winter","Spring","Monsoon"]},
+{q:"Which metal is liquid at room temperature?",o:["Mercury","Iron","Copper","Gold"]},
+{q:"What is the capital of the United Kingdom?",o:["London","Manchester","Edinburgh","Liverpool"]},
+{q:"Who wrote the national anthem of Pakistan?",o:["Hafeez Jalandhari","Allama Iqbal","Faiz Ahmed Faiz","Ahmed Faraz"]},
+{q:"What do bees make?",o:["Honey","Silk","Milk","Oil"]},
+{q:"How many colours are in a rainbow?",o:["7","5","6","8"]},
+{q:"Which sport is played at Wimbledon?",o:["Tennis","Cricket","Golf","Football"]},
+{q:"Which is the largest hot desert in the world?",o:["Sahara","Gobi","Thar","Kalahari"]},
+{q:"What does a thermometer measure?",o:["Temperature","Weight","Speed","Length"]},
+{q:"Which is the largest mammal that lives on land?",o:["African elephant","Rhino","Hippo","Giraffe"]},
+{q:"What is the capital of Turkey?",o:["Ankara","Istanbul","Izmir","Bursa"]},
+{q:"Which language has the most native speakers?",o:["Mandarin Chinese","English","Spanish","Hindi"]},
+{q:"How many teeth does an adult human normally have?",o:["32","28","36","30"]},
+{q:"About how fast does light travel?",o:["300,000 km/s","30,000 km/s","3,000 km/s","3 million km/s"]},
+{q:"Which is the hottest planet in the solar system?",o:["Venus","Mercury","Mars","Jupiter"]},
+{q:"What is the study of living things called?",o:["Biology","Geology","Chemistry","Astronomy"]},
+{q:"Which famous clock tower is in London?",o:["Big Ben","Eiffel Tower","Leaning Tower","Burj Khalifa"]},
+{q:"Which is the tallest building in the world?",o:["Burj Khalifa","Shanghai Tower","Taipei 101","Empire State Building"]},
+{q:"How many months have 31 days?",o:["7","6","5","8"]},
+{q:"What is the plural of “child”?",o:["Children","Childs","Childes","Childrens"]},
+{q:"Which food is made from milk?",o:["Cheese","Bread","Rice","Honey"]},
+{q:"What is 100 ÷ 4?",o:["25","20","24","40"]},
+{q:"Which part of a plant makes food using sunlight?",o:["Leaves","Roots","Stem","Seeds"]},
+{q:"Which game is played with a shuttlecock?",o:["Badminton","Squash","Tennis","Table tennis"]}
+];
+const $=id=>document.getElementById(id);
+let list,i,score,streak,best,left,timer,locked;
+function shuffle(a){a=a.slice();for(let k=a.length-1;k>0;k--){const j=Math.floor(Math.random()*(k+1));[a[k],a[j]]=[a[j],a[k]]}return a}
+function show(id){["start","quiz","end"].forEach(s=>{$(s).hidden=s!==id})}
+async function start(ev){const gb=(ev&&ev.currentTarget)||$("go");if(busy)return;try{ac=ac||new(window.AudioContext||window.webkitAudioContext)();ac.resume()}catch(e){}busy=true;const old=gb.textContent;gb.disabled=true;gb.textContent="Making new questions…";let fresh=null;try{fresh=await aiQs()}catch(e){}gb.disabled=false;gb.textContent=old;busy=false;src=fresh?"Claude":"Backup";list=fresh||fromBank(10);i=0;score=0;streak=0;best=0;show("quiz");load()}
+function tick(){$("sec").textContent=left;$("ring").style.strokeDashoffset=138.2*(1-left/15)}
+function load(){
+locked=false;const x=list[i];
+$("count").textContent="Question "+(i+1)+" of "+list.length+" · "+src;
+$("streak").textContent="Streak: "+streak;
+$("fill").style.width=(i/list.length*100)+"%";
+$("q").textContent=x.q;$("fb").textContent="Choose an answer to continue.";$("fb").className="hint";$("next").hidden=true;
+const box=$("opts");box.textContent="";
+shuffle(x.o).forEach((txt,k)=>{
+const b=document.createElement("button");b.type="button";b.className="opt";
+const s=document.createElement("span");s.className="ltr";s.textContent="ABCD"[k];
+const p=document.createElement("span");p.textContent=txt;
+b.append(s,p);b.onclick=()=>pick(b,txt);box.append(b)});
+clearInterval(timer);left=15;$("ring").style.transition="none";tick();
+requestAnimationFrame(()=>{$("ring").style.transition=""});
+timer=setInterval(()=>{left--;tick();if(left<=0)pick(null,null)},1000)}
+function pick(b,txt){
+if(locked)return;locked=true;clearInterval(timer);
+const x=list[i],right=x.o[0],ok=txt===right,fb=$("fb");play(ok);
+document.querySelectorAll(".opt").forEach(o=>{o.disabled=true;if(o.lastChild.textContent===right)o.classList.add("good")});
+if(ok){score++;streak++;best=Math.max(best,streak);fb.textContent=["Correct!","Nice one!","Right on!"][Math.floor(Math.random()*3)];fb.className="good"}
+else{streak=0;if(b)b.classList.add("bad");fb.textContent=(b?"Not quite.":"Time’s up.")+" The answer is "+right+".";fb.className="bad"}
+$("streak").textContent="Streak: "+streak;
+$("next").textContent=i===list.length-1?"See result":"Next question";$("next").hidden=false}
+function finish(){
+clearInterval(timer);show("end");const n=list.length;
+$("score").textContent=score+"/"+n;
+$("msg").textContent=score>=7?"Quiz master":score>=5?"Nice work":"Good start";
+$("sub").textContent="Best streak: "+best+". Play again to beat your score."}
+let busy=false,src="Backup";
+let seen=new Set(),recent=[];try{seen=new Set(JSON.parse(localStorage.getItem("seen")||"[]"));recent=JSON.parse(localStorage.getItem("recentq")||"[]");if(!Array.isArray(recent))recent=[]}catch(e){seen=new Set();recent=[]}
+function save(){try{localStorage.setItem("seen",JSON.stringify([...seen]));localStorage.setItem("recentq",JSON.stringify(recent.slice(-20)))}catch(e){}}
+function fromBank(n){let pool=Q.filter(x=>!seen.has(x.q));if(pool.length<n){seen.clear();pool=Q.slice()}const out=shuffle(pool).slice(0,n);out.forEach(x=>seen.add(x.q));save();return out}
+const TOPICS=["space","animals","world geography","Pakistan","the human body","food","sports","technology","history","music","movies","maths","inventions","nature","famous people","art","languages","cricket","oceans","festivals","science","transport","famous buildings","plants"];
+async function aiQs(){
+const s=window.claude&&await window.claude.use("sample");
+if(!s)return null;
+const t=shuffle(TOPICS).slice(0,10).join(", ");
+const p='Write 10 easy multiple-choice quiz questions for a general audience, one question for each of these topics: '+t+'. Make every question fresh and different (seed '+Math.random().toString(36).slice(2,8)+'). Do not repeat or rephrase any of these earlier questions: '+(recent.slice(-20).join(" | ")||"none")+'. Reply with ONLY a JSON array, no other text, like [{"q":"question","o":["correct answer","wrong 1","wrong 2","wrong 3"]}]. The correct answer must always be first in o. Keep each option under 40 characters. Only use facts you are sure about.';
+try{
+const r=await Promise.race([s.json(p,{modelTier:"quick",cache:false}),new Promise((_,j)=>setTimeout(()=>j(0),30000))]);
+const ok=(Array.isArray(r)?r:[]).filter(x=>x&&typeof x.q==="string"&&x.q.length<200&&Array.isArray(x.o)&&x.o.length===4&&x.o.every(v=>typeof v==="string"&&v.length>0&&v.length<=60)&&new Set(x.o).size===4);
+if(ok.length<6)return null;
+const out=ok.slice(0,10).map(x=>({q:x.q,o:x.o}));
+out.forEach(x=>recent.push(x.q));save();return shuffle(out.concat(fromBank(10-out.length)));
+}catch(e){return null}}
+let ac=null,sndOn=true;
+function tone(f,t0,d,type,v){const o=ac.createOscillator(),g=ac.createGain(),n=ac.currentTime+t0;o.type=type;o.frequency.setValueAtTime(f,n);g.gain.setValueAtTime(0.0001,n);g.gain.exponentialRampToValueAtTime(v,n+.02);g.gain.exponentialRampToValueAtTime(0.0001,n+d);o.connect(g);g.connect(ac.destination);o.start(n);o.stop(n+d+.05)}
+function play(ok){if(!sndOn)return;try{ac=ac||new(window.AudioContext||window.webkitAudioContext)();if(ac.state==="suspended")ac.resume();if(ok){tone(660,0,.14,"sine",.25);tone(880,.12,.24,"sine",.25)}else{tone(220,0,.18,"square",.12);tone(160,.16,.3,"square",.12)}}catch(e){}}
+$("snd").onclick=()=>{sndOn=!sndOn;$("snd").textContent=sndOn?"Sound on":"Sound off";if(sndOn)play(true)};
+function setTheme(t){document.documentElement.dataset.theme=t;$("theme").textContent=t==="dark"?"Light mode":"Dark mode";try{localStorage.setItem("theme",t)}catch(e){}}
+$("theme").onclick=()=>setTheme(document.documentElement.dataset.theme==="dark"?"light":"dark");
+let saved=null;try{saved=localStorage.getItem("theme")}catch(e){}
+setTheme(saved==="dark"?"dark":"light");
+$("go").onclick=start;$("again").onclick=start;
+$("next").onclick=()=>{if(!locked)return;i++;if(i>=list.length)finish();else load()};
+</script>
+</body>
+</html>
